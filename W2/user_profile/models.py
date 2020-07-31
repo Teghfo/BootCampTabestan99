@@ -15,6 +15,14 @@ class ProfileManager(models.Manager):
             for i in cursor.fetchall():
                 res_list.append(i)
         return res_list
+    
+    def truncate(self):
+        from django.db import connection
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute(f"TRUNCATE TABLE {self.model._meta.db_table} CASCADE")
+            except Exception as e:
+                raise e
 
 
 class Profile(models.Model):
@@ -42,6 +50,7 @@ class Profile(models.Model):
             raise '''khak tu saret'''
         
         super(Profile, self).save(*args, **kwargs)
+
 
 
 # User.objects.bulk_create
