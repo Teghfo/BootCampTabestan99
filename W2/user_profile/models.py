@@ -39,6 +39,7 @@ class Profile(models.Model):
     address = models.CharField(max_length=500, default='')
     admin = models.CharField(max_length=20, blank=True, null= True)
     gender = models.CharField(max_length=1, null = True,choices=gender_choices)
+    image = models.ImageField(uploa)
     objects = ProfileManager()
 
     class Meta:
