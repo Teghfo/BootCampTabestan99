@@ -42,7 +42,6 @@ class Profile(models.Model):
     phone_regx = RegexValidator(regex=phone_regx, message='''shomare mobile ro 
                                                     dar format khaste shodeh vared nakardi: format dorost9xxxxxxxxx''')
     phone_number = models.CharField(validators=[phone_regx], max_length=50)
-    address = models.CharField(max_length=500, default='')
     admin = models.CharField(max_length=20, blank=True, null= True)
     gender = models.CharField(max_length=1, null = True,choices=gender_choices)
     objects = ProfileManager()
@@ -68,6 +67,6 @@ class Address(models.Model):
 
 
     '''
-    profile = models.ForeignKey(Profile, related_name='address', on_delete = models.CASCADE)
+    profile = models.ForeignKey(Profile, related_name='profile', on_delete = models.CASCADE)
     city = models.CharField('شهر', max_length=50 , help_text='شهر')
 # User.objects.bulk_create

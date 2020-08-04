@@ -1,0 +1,5 @@
+############# add jupyter to django
+
+pip install jupyter ipython django-extensions
+
+python manage.py shell_plus --notebook
