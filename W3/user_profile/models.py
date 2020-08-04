@@ -44,6 +44,7 @@ class Profile(models.Model):
     phone_number = models.CharField(validators=[phone_regx], max_length=50)
     admin = models.CharField(max_length=20, blank=True, null= True)
     gender = models.CharField(max_length=1, null = True,choices=gender_choices)
+    verified_account = models.BooleanField(default=False)
     objects = ProfileManager()
 
     class Meta:
@@ -51,7 +52,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
-
+    
     def save(self, *args, **kwargs):
         phone_regx = r'^9\d{9}$'
         if not re.match(phone_regx, self.phone_number):
@@ -61,12 +62,22 @@ class Profile(models.Model):
 
 
 
+CITY_CHOICE = [
+    ('tehran', 'Tehran'),
+    ('shiraz', 'Shiraz'),
+    ('tabriz', 'Tabriz')
+]
+
 class Address(models.Model):
     '''
     every user can have multiple address for sending receiving ticket!
 
 
     '''
-    profile = models.ForeignKey(Profile, related_name='profile', on_delete = models.CASCADE)
-    city = models.CharField('شهر', max_length=50 , help_text='شهر')
+    profile = models.ForeignKey(Profile, related_name = 'address_by', on_delete = models.CASCADE)
+    city = models.CharField('شهر', max_length=10 , help_text='شهر', choices=CITY_CHOICE)
+    add = models.CharField('آدرس', max_length=50, null = True)
+
+    def __str__(self):
+        return f"{self.profile.user}-{self.id}"
 # User.objects.bulk_create
