@@ -26,6 +26,12 @@ class ProfileManager(models.Manager):
 
 
 class Profile(models.Model):
+    '''
+    cinema_ticket member's Profile.
+    using User model of django for generaing user profile.
+
+     
+    '''
     gender_choices = [
         ('M', 'Male'), 
         ('F', 'Female')
@@ -39,11 +45,13 @@ class Profile(models.Model):
     address = models.CharField(max_length=500, default='')
     admin = models.CharField(max_length=20, blank=True, null= True)
     gender = models.CharField(max_length=1, null = True,choices=gender_choices)
-    image = models.ImageField(uploa)
     objects = ProfileManager()
 
     class Meta:
         db_table = 'user_profile'
+
+    def __str__(self):
+        return self.user.username
 
     def save(self, *args, **kwargs):
         phone_regx = r'^9\d{9}$'
@@ -54,4 +62,12 @@ class Profile(models.Model):
 
 
 
+class Address(models.Model):
+    '''
+    every user can have multiple address for sending receiving ticket!
+
+
+    '''
+    profile = models.ForeignKey(Profile, related_name='address', on_delete = models.CASCADE)
+    city = models.CharField('شهر', max_length=50 , help_text='شهر')
 # User.objects.bulk_create
