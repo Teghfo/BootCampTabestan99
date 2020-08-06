@@ -1,3 +1,13 @@
+@font-face{
+    font-family: XASHKAN;
+    src: url("https://cdn.fontcdn.ir/Font/Persian/Nazanin/Nazanin-Bold.woff");
+}
+
+body{
+    direction: rtl;
+    font-family: XASHKAN;
+}
+
 span {
     color : salmon;
     margin-left: 20px;
@@ -11,4 +21,13 @@ span {
     color: tomato;
     font-size: 50px;
     text-align: center;
+}
+
+
+.nav {
+    background-color: gray;
+}
+
+.nav-link{
+    color: red;
 }
