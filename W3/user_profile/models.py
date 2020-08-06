@@ -68,6 +68,13 @@ CITY_CHOICE = [
     ('tabriz', 'Tabriz')
 ]
 
+
+STATE_CHOICE = [
+    ('tehran', 'Tehran'),
+    ('fars', 'Fars'),
+    ('azarbayejan sharghi', 'Azarbayejan Sharghi')
+]
+
 class Address(models.Model):
     '''
     every user can have multiple address for sending receiving ticket!
@@ -75,8 +82,13 @@ class Address(models.Model):
 
     '''
     profile = models.ForeignKey(Profile, related_name = 'address_by', on_delete = models.CASCADE)
-    city = models.CharField('شهر', max_length=10 , help_text='شهر', choices=CITY_CHOICE)
-    add = models.CharField('آدرس', max_length=50, null = True)
+    state = models.CharField('استان', max_length=30 , help_text='استان', choices=STATE_CHOICE) 
+    city = models.CharField('شهر', max_length=30 , help_text='شهر', choices=CITY_CHOICE)
+    addr = models.CharField('آدرس', max_length=50, null = True)
+
+
+
+
 
     def __str__(self):
         return f"{self.profile.user}-{self.id}"

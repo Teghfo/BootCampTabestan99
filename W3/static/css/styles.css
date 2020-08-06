@@ -1,0 +1,14 @@
+span {
+    color : salmon;
+    margin-left: 20px;
+    margin-bottom: 0;
+    /* padding-left: 10px; */
+    border: slateblue;
+    border-style: solid;
+}
+
+.cart p{
+    color: tomato;
+    font-size: 50px;
+    text-align: center;
+}
