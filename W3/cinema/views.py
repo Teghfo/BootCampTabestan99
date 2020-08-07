@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def film_detail(request, film_id):
+    return render(request, 'films-detail.html')

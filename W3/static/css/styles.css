@@ -1,33 +1,54 @@
-@font-face{
-    font-family: XASHKAN;
-    src: url("https://cdn.fontcdn.ir/Font/Persian/Nazanin/Nazanin-Bold.woff");
+@font-face {
+  font-family: XASHKAN;
+  src: url("https://cdn.fontcdn.ir/Font/Persian/Nazanin/Nazanin-Bold.woff");
 }
 
-body{
-    direction: rtl;
-    font-family: XASHKAN;
+body {
+  direction: rtl;
+  font-family: XASHKAN;
+  background-color: rgb(219, 226, 226);
 }
 
-span {
+/* span {
     color : salmon;
     margin-left: 20px;
     margin-bottom: 0;
     /* padding-left: 10px; */
-    border: slateblue;
+/* border: slateblue;
     border-style: solid;
-}
+} */
 
-.cart p{
-    color: tomato;
-    font-size: 50px;
-    text-align: center;
+.cart p {
+  color: tomato;
+  font-size: 50px;
+  text-align: center;
 }
-
 
 .nav {
-    background-color: gray;
+  background-color: gray;
 }
 
-.nav-link{
-    color: red;
+.nav-link {
+  color: red;
+}
+
+.active {
+  color: aquamarine;
+}
+#NavHead {
+  font-size: 10px;
+  color: blue;
+}
+
+#NavHead:hover {
+  color: darkgreen;
+}
+
+#NavHead:active {
+  color: red;
+}
+
+.head-margin {
+  margin-right: 15px;
+  margin-left: 10px;
 }

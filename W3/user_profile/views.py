@@ -5,10 +5,9 @@ from .models import Profile, Address
 
 def signup(request):
     pass
-
-
+ 
 def login(request):
-    pass
+    return render(request, 'login.html')
 
 
 def profile_show(request):
