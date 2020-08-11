@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div>
+    <h3>profile</h3>
+    <p>username = {{ profile.user.username }}</p>
+    <p>gender = {{ profile.gender }}</p>
+    <p>phone = {{ profile.phone_number }}</p>
+</div>
+
+<div>
+    <h3>address</h3>
+    <ul>
+        {% for elm in address%}
+            <li>city : {{elm.city}} </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
