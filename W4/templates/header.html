@@ -60,7 +60,19 @@
   <li class="nav-item">
     <a class="nav-link" id="NavStick" href="#">لیست سینماها</a>
   </li>
-  <button class="btn btn-success mb-1 mt-1 ">ورود</button>
+  {% if user.is_authenticated %}
+    <li class="nav-item">
+      hello {{user}}
+    </li>
+    <a class="btn btn-success mb-1 mt-1 ml-2">داشبود</a>
+
+    <a class="btn btn-success mb-1 mt-1 " href="{% url 'log-out' %}">خروج</a>
+  {% else %}
+
+  <a class="btn btn-success mb-1 mt-1 " href="{% url 'login' %}">ورود</a>
+  {% endif %}
+  
+  
 </ul> 
  
 </nav>

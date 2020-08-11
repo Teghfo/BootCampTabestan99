@@ -55,5 +55,10 @@ body {
 
 #NavStick {
   font-size: 1rem;
-  color: blueviolet;
+  color: greenyellow;
+}
+
+#LogIn {
+  direction: ltr;
+  margin-bottom: 1rem;
 }
