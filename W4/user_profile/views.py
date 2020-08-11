@@ -11,7 +11,7 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email',
-                  'is_staff', 'password1', 'password2']
+                  'password1', 'password2']
 
 
 def register(request):
