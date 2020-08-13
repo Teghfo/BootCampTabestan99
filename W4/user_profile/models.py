@@ -42,9 +42,10 @@ class Profile(models.Model):
     phone_regx = r'^9\d{9}$'
     phone_regx = RegexValidator(regex=phone_regx, message='''shomare mobile ro 
                                                     dar format khaste shodeh vared nakardi: format dorost9xxxxxxxxx''')
-    phone_number = models.CharField(validators=[phone_regx], max_length=50)
+    phone_number = models.CharField(max_length=50, blank=True, null=True)
     admin = models.CharField(max_length=20, blank=True, null=True)
-    gender = models.CharField(max_length=1, null=True, choices=gender_choices)
+    gender = models.CharField(max_length=1, blank=True,
+                              null=True, choices=gender_choices)
     verified_account = models.BooleanField(default=False)
     objects = ProfileManager()
 
@@ -54,12 +55,12 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-    def save(self, *args, **kwargs):
-        phone_regx = r'^9\d{9}$'
-        if not re.match(phone_regx, self.phone_number):
-            raise '''khak tu saret'''
+    # def save(self, *args, **kwargs):
+    #     phone_regx = r'^9\d{9}$'
+    #     if not re.match(phone_regx, self.phone_number):
+    #         raise '''khak tu saret'''
 
-        super(Profile, self).save(*args, **kwargs)
+    #     super(Profile, self).save(*args, **kwargs)
 
 
 CITY_CHOICE = [

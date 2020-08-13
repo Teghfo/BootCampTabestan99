@@ -42,37 +42,38 @@
             <i class="fa fa-youtube"></i>
           </a>
         </div>
+      </div>
     </div>
-  </div>
 </section>
 
 {% comment %} ------------------------------------------------- {% endcomment %}
 
 <nav class="sticky-top" id="NavStick">
- 
- <ul class="nav"> 
-  <li class="nav-item">
-    <a class="nav-link" id="NavStick" href="{% url 'home' %}">خانه</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="NavStick" href="#">لیست فیلمها</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="NavStick" href="#">لیست سینماها</a>
-  </li>
-  {% if user.is_authenticated %}
+
+  <ul class="nav">
     <li class="nav-item">
-      hello {{user}}
+      <a class="nav-link" id="NavStick" href="{% url 'home' %}">خانه</a>
     </li>
-    <a class="btn btn-success mb-1 mt-1 ml-2">داشبود</a>
+    <li class="nav-item">
+      <a class="nav-link" id="NavStick" href="#">لیست فیلمها</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="NavStick" href="#">لیست سینماها</a>
+    </li>
+    {% if user.is_authenticated %}
+    <div class="mr-auto">
+      <a class="btn btn-success mb-1 mt-1 ml-2" id="DashbordBtn" href="{% url 'profile' %}"><i
+          class="fa fa-user ml-1"></i>
+        داشبورد {{user}}</a>
 
-    <a class="btn btn-success mb-1 mt-1 " href="{% url 'log-out' %}">خروج</a>
-  {% else %}
+      <a class="btn btn-success mb-1 mt-1 ml-2" href="{% url 'log-out' %}">خروج</a>
+    </div>
+    {% else %}
 
-  <a class="btn btn-success mb-1 mt-1 " href="{% url 'login' %}">ورود</a>
-  {% endif %}
-  
-  
-</ul> 
- 
+    <a class="btn btn-success mb-1 mt-1 mr-auto ml-2" href="{% url 'login' %}">ورود</a>
+    {% endif %}
+
+
+  </ul>
+
 </nav>
