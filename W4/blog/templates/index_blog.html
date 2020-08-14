@@ -1,0 +1,40 @@
+{% extends 'base_blog.html' %}
+
+
+{% block content %}
+
+<ul>
+    {% for article in latest_articles  %}
+    <li>
+        <h1>{{article.title}}</h1>
+        <p>{{article.text |truncatechars:25}}</p>
+        <p>{{article.created_date}}</p>
+        <h5>نویسندگان: </h5>
+        <ul>
+            {% for author in article.author.all %}
+            <li>{{author.full_name}}</li>
+            {% endfor %}
+
+        </ul>
+
+    </li>
+
+    {% endfor %}
+
+</ul>
+
+<hr>
+
+<ul>
+    <h1>نویسنده های برتر</h1>
+    {% for author in best_authors  %}
+    <li>
+        <p>{{author.full_name}}</p>
+
+    </li>
+
+    {% endfor %}
+
+</ul>
+
+{% endblock content %}

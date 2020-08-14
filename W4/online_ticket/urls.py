@@ -11,7 +11,8 @@ urlpatterns = [
     path('account/', include('user_profile.urls')),
     path('cinema/', include('cinema.urls')),
     path('', include('django.contrib.auth.urls')),
-    path('', index, name='home')
+    path('', index, name='home'),
+    path('blog/', include('blog.urls'))
 
 ]
 
