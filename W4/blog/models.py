@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.postgres.fields import ArrayField
+from django.utils.text import slugify
+from django.urls import reverse
 
 from user_profile.models import Profile
 
@@ -8,7 +10,7 @@ from user_profile.models import Profile
 class Author(models.Model):
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=255)
-    rate = models.FloatField()
+    rate = models.FloatField(default=0)
 
     def __str__(self):
         return self.full_name
@@ -21,13 +23,14 @@ class Author(models.Model):
 class Article(models.Model):
     title = models.CharField(max_length=255)
     text = models.TextField()
+    slug = models.SlugField(unique=True, allow_unicode=True)
     poster = models.ImageField(upload_to='blog/images/')
     author = models.ManyToManyField(Author)
     created_date = models.DateField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     is_published = models.BooleanField(default=False)
     published_date = models.DateField()
-    rate_article = models.FloatField()
+    rate_article = models.FloatField(default=0)
     video = models.FileField(upload_to='blog/videos/', null=True, blank=True)
 
     class Meta:
@@ -35,6 +38,14 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title, allow_unicode=True)[:100]
+        super(Article, self).save(*args, **kwargs)
+
+    # def get_absolute_url(self):
+    #     return reverse("detail-article", kwargs={"slug": str(self.slug)})
 
 
 class ArticleImages(models.Model):
@@ -64,10 +75,15 @@ class BaseComment(models.Model):
 
 class Comment(BaseComment):
     pass
-    # def save(self, *args, **kwargs):
-    #     self.article.author
 
-    #     super(Profile, self).save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        rate_count = self.article.comment_set.all().filter(rate__gt=0).count()
+        if self.rate:
+            new_rate = (((self.article.rate_article)*rate_count) +
+                        self.rate) / (rate_count + 1)
+            self.article.rate_article = new_rate
+            self.article.save()
+        super(Comment, self).save(*args, **kwargs)
 
 
 class ReplyComment(BaseComment):

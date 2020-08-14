@@ -80,10 +80,8 @@ def custom_login(request):
 @login_required(login_url='login')
 def profile_show(request):
     if request.method == 'GET':
-
         profile = Profile.objects.get(user=request.user)
         address = profile.address_by.all()
-
         return render(request, 'profile.html', {'profile': profile, 'address': address})
 
 
