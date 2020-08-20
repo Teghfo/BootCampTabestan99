@@ -1,62 +1,64 @@
 {% extends 'base.html' %}
 
 {% block content %}
-   {% comment %} <div>
-   <ul>
-            {% for movie in movies %}
-                
-                    <div class="card pb-2 mb-1 ml-1" style="width:200px; background-color: silver;">
-                        <img class="card-img-top mb-1" width="200" height="150" src="/media/{{movie.poster}}" alt="Card image">
-                        <div class="card-body text-center">
-                        <h6 class="card-title">نام فیلم: {{movie.name}}</h6>
-                        <p class="card-text small">سال ساخت: {{movie.year}}</p>
-                        <p class="card-text small">ژانر نمایش: {{movie.genre}}</p>
-                        <a href="#" class="btn btn-primary" style="font-size: 10px;">توضیحات بیشتر</a>
-                    </div>
-                
-            {% endfor %}
-   </ul>
-   </div> {% endcomment %}
+{% comment %} <div>
+  <ul>
+    {% for movie in movies %}
 
-
-  <section  class="py-5">
-    <div class="container">
-      <div class="row">
-        {% if movies %}
-          {% for movie in movies %}
-            <!-- Listing 1 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card">
-                <img class="card-img-top mb-2" height="350" src="/media/{{movie.poster}}" alt="">
-                <div class="card-body">
-                  <div class="listing-heading text-center">
-                   <a href="{% url 'film-detail' movie.id %}"><h4 class="text-primary">نام فیلم: {{movie.name}}</h4></a> 
-                  </div>
-                  <hr>
-                  <div class="row py-2 text-secondary mr-1">
-                    <div class="col-6">
-                      سال ساخت: {{movie.year}}</div>
-                    <div class="col-6">
-                      ژانر نمایش: {{movie.genre}}</div>
-                  </div>
-                      <div class="text-center"><i class="fa fa-user"></i> کارگردان: {{ movie.director }}</div>
-                  <hr>
-                
-                  <a href="{% url 'film-detail' movie.id %}" class="btn btn-primary btn-block">توضیحات بیشتر</a>
-                </div>
-              </div>
-            </div>
-          {% endfor %}
-        {% else %}
-          <div class="col-md-12">
-            <p>No Listings Available</p>
-          </div>
-        {% endif %}
-
+    <div class="card pb-2 mb-1 ml-1" style="width:200px; background-color: silver;">
+      <img class="card-img-top mb-1" width="200" height="150" src="/media/{{movie.poster}}" alt="Card image">
+      <div class="card-body text-center">
+        <h6 class="card-title">نام فیلم: {{movie.name}}</h6>
+        <p class="card-text small">سال ساخت: {{movie.year}}</p>
+        <p class="card-text small">ژانر نمایش: {{movie.genre}}</p>
+        <a href="#" class="btn btn-primary" style="font-size: 10px;">توضیحات بیشتر</a>
       </div>
+
+      {% endfor %}
+  </ul>
+</div> {% endcomment %}
+
+
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      {% if movies %}
+      {% for movie in movies %}
+      <!-- Listing 1 -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card">
+          <img class="card-img-top mb-2" height="350" src="{{movie.poster.url}}" alt="">
+          <div class="card-body">
+            <div class="listing-heading text-center">
+              <a href="{% url 'film-detail' movie.id %}">
+                <h4 class="text-primary">نام فیلم: {{movie.name}}</h4>
+              </a>
+            </div>
+            <hr>
+            <div class="row py-2 text-secondary mr-1">
+              <div class="col-6">
+                سال ساخت: {{movie.year}}</div>
+              <div class="col-6">
+                ژانر نمایش: {{movie.genre}}</div>
+            </div>
+            <div class="text-center"><i class="fa fa-user"></i> کارگردان: {{ movie.director }}</div>
+            <hr>
+
+            <a href="{% url 'film-detail' movie.id %}" class="btn btn-primary btn-block">توضیحات بیشتر</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <div class="col-md-12">
+        <p>No Listings Available</p>
+      </div>
+      {% endif %}
+
     </div>
-  </section>
+  </div>
+</section>
 
 
-   
+
 {% endblock content %}

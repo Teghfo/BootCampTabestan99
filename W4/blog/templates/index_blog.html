@@ -3,8 +3,15 @@
 
 {% block content %}
 
+<h1>جستجوی مقالات</h1>
+<form method="post" action="{% url 'search-articles'%}">
+    {% csrf_token %}
+    {{ search_form.as_table }}
+    <button type="submit">جستجو</button>
+</form>
+
 <ul>
-    {% for article in latest_articles  %}
+    {% for article in articles  %}
     <li>
         <a href="{% url 'detail-article' article.slug%}">
             <h1>{{article.title}}</h1>
@@ -26,8 +33,25 @@
 
 </ul>
 
-<hr>
 
+
+<hr>
+<ul>
+    <h1>جدیدترین مقالات</h1>
+    {% for article in latest  %}
+    <li>
+        <a href="{% url 'detail-article' article.slug%}">
+            <h4>{{article.title}}</h4>
+        </a>
+
+    </li>
+
+    {% endfor %}
+
+</ul>
+
+
+<hr>
 <ul>
     <h1>نویسنده های برتر</h1>
     {% for author in best_authors  %}

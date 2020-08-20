@@ -1,0 +1,38 @@
+{% extends 'base_blog.html' %}
+
+
+{% block content %}
+{% if search_result %}
+
+<ul>
+    {% for article in search_result  %}
+    <li>
+        <a href="{% url 'detail-article' article.slug%}">
+            <h1>{{article.title}}</h1>
+        </a>
+        <p>{{article.text |truncatechars:25}}</p>
+        <p>{{article.created_date}}</p>
+        <p>امتیاز: {{article.rate_article}}</p>
+        <h5>نویسندگان: </h5>
+        <ul>
+            {% for author in article.author.all %}
+            <li>{{author.full_name}}</li>
+            {% endfor %}
+
+        </ul>
+
+    </li>
+
+    {% endfor %}
+
+</ul>
+
+{% else %}
+<p>Not Found!</p>
+
+{% endif %}
+
+
+
+
+{% endblock content %}

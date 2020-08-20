@@ -3,26 +3,26 @@
 
 {% block content %}
 <div class="container">
-<img class="rounded mx-auto d-block" src="/media/{{movie.poster}}" width ='400' length='200' alt="">
+  <img class="rounded mx-auto d-block" src="{{movie.poster.url}}" width='400' length='200' alt="">
 
 
-<dl class="row">
-  <dt class="col-sm-3">نام فیلم</dt>
-  <dd class="col-sm-9">{{movie.name}}</dd>
+  <dl class="row">
+    <dt class="col-sm-3">نام فیلم</dt>
+    <dd class="col-sm-9">{{movie.name}}</dd>
 
-  <dt class="col-sm-3">سال ساخت</dt>
-  <dd class="col-sm-9">{{movie.year}}</dd>
+    <dt class="col-sm-3">سال ساخت</dt>
+    <dd class="col-sm-9">{{movie.year}}</dd>
 
-  <dt class="col-sm-3">کارگردان</dt>
-  <dd class="col-sm-9">{{movie.director}}</dd>
-  
-  <dt class="col-sm-3">بازیگران</dt>
-  <dd class="col-sm-9">{{movie.cast}}</dd>
+    <dt class="col-sm-3">کارگردان</dt>
+    <dd class="col-sm-9">{{movie.director}}</dd>
 
-  <dt class="col-sm-3">خلاصه فیلم</dt>
-  <dd class="col-sm-9">
-    <p>{{movie.description}}</p>
-  </dd>
-  </div>
+    <dt class="col-sm-3">بازیگران</dt>
+    <dd class="col-sm-9">{{movie.cast}}</dd>
+
+    <dt class="col-sm-3">خلاصه فیلم</dt>
+    <dd class="col-sm-9">
+      <p>{{movie.description}}</p>
+    </dd>
+</div>
 </dl>
 {% endblock content %}

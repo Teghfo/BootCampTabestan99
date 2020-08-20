@@ -88,3 +88,9 @@ body {
     background-color: rgb(211, 127, 18);
     border-color: rgb(211, 127, 18);
 }
+
+.header-bg {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

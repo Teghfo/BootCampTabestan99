@@ -1,0 +1,30 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Detail Article</title>
+        </head>
+
+        <body>
+            <p>{{article.title}}</p>
+            <p>{{article.text}}</p>
+        </body>
+        <div>
+
+            <h2>نظرات</h2>
+            {% for comment in comments  %}
+            <p>کاربر: {{comment.name}}<span>--- نظر: {{comment.content}}</span> </p>
+            {% endfor %}
+        </div>
+        <div>
+            <h3>نظر دهید</h3>
+            <form method="post" action=".">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">نظرتان را ثبت کنید</button>
+            </form>
+        </div>
+
+    </html>

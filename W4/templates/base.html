@@ -15,10 +15,11 @@
         <div>
             {% include 'header.html' %}
             {% if 'login' not in request.path and 'register' not in request.path  %}
-            <section class="jumbotron text-center">
+            <section class="jumbotron text-center"
+                style="background: white url('{%static "img/bg-poster.jpg"%}');  background-position: center; background-repeat: no-repeat; background-size: cover;">
                 <div class="container">
-                    <h1>به آنلاین تیکت خوش آمدید</h1>
-                    <p class="lead text-muted">در این بخش قرار است جستجو بر روی فیلم ها و سانس ها پیاده سازی شود.</p>
+                    <h1 style="color: white">به آنلاین تیکت خوش آمدید</h1>
+                    <p style="color: white">در این بخش قرار است جستجو بر روی فیلم ها و سانس ها پیاده سازی شود.</p>
                     <p>
                         <a href="#" class="btn btn-primary my-2">جستجو</a>
                     </p>

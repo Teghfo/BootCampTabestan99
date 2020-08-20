@@ -8,7 +8,8 @@ from user_profile.models import Profile
 
 
 class Author(models.Model):
-    profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
+    profile = models.OneToOneField(
+        Profile, related_name='author', on_delete=models.CASCADE)
     full_name = models.CharField(max_length=255)
     rate = models.FloatField(default=0)
 
@@ -29,7 +30,7 @@ class Article(models.Model):
     created_date = models.DateField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     is_published = models.BooleanField(default=False)
-    published_date = models.DateField()
+    published_date = models.DateField(null=True, blank=True)
     rate_article = models.FloatField(default=0)
     video = models.FileField(upload_to='blog/videos/', null=True, blank=True)
 
@@ -65,9 +66,11 @@ RATE_CHOICE = {
 class BaseComment(models.Model):
     name = models.CharField(max_length=50)
     content = models.TextField(max_length=1000)
-    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    article = models.ForeignKey(
+        Article, on_delete=models.CASCADE)
     rate = models.IntegerField(choices=RATE_CHOICE, null=True, blank=True)
     is_show = models.BooleanField(default=False)
+    timestamp = models.DateField(auto_now_add=True)
 
     class Meta:
         abstract = True
@@ -84,6 +87,9 @@ class Comment(BaseComment):
             self.article.rate_article = new_rate
             self.article.save()
         super(Comment, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
 
 
 class ReplyComment(BaseComment):

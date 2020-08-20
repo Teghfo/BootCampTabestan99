@@ -28,6 +28,10 @@ class CustomUserCreationForm(UserCreationForm):
             "email": "ایمیل خود را به درستی وارد کنید",
         }
 
+        widgets = {
+            'username': forms.TextInput(attrs={'size': 80}),
+        }
+
     def save(self, commit=True):
         '''
         override user create form to create profile after register!
@@ -77,7 +81,7 @@ def custom_login(request):
     return render(request, 'login.html')
 
 
-@login_required(login_url='login')
+@ login_required(login_url='login')
 def profile_show(request):
     if request.method == 'GET':
         profile = Profile.objects.get(user=request.user)
@@ -90,7 +94,7 @@ def custom_logout(request):
     return redirect('home')
 
 
-@login_required(login_url='login')
+@ login_required(login_url='login')
 def edit_profile(request):
     profile = Profile.objects.get(user=request.user)
     if request.method == 'POST':
