@@ -1,0 +1,82 @@
+{% load static %}
+
+
+<section>
+  <div class="head-margin">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="row">
+          <div class="col-xs-2">
+            <a class="nav-link" id="NavHead" href="{% url 'home' %}">صفحه اصلی</a>
+          </div>
+          <div class="col-xs-2">
+            <a class="nav-link" id="NavHead" href="{% url 'films-list' %}">سینما</a>
+          </div>
+          <div class="col-xs-2">
+            <a class="nav-link" id="NavHead" href="#">تئاتر</a>
+          </div>
+          <div class="col-xs-2">
+            <a class="nav-link" id="NavHead" href="#">تازه های دنیای هنر</a>
+          </div>
+          <div class="col-xs-2">
+            <a class="nav-link" id="NavHead" href="#">تماس با ما</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="text-left">
+          <i class="ml-2 small" id="date"></i>
+          <a href="#">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a href="#">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a href="#">
+            <i class="fa fa-instagram"></i>
+          </a>
+          <a href="#">
+            <i class="fa fa-linkedin"></i>
+          </a>
+          <a href="#">
+            <i class="fa fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+</section>
+
+{% comment %} ------------------------------------------------- {% endcomment %}
+
+<nav class="sticky-top" id="NavStick">
+
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" id="NavStick" href="{% url 'home' %}">خانه</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="NavStick" href="#">لیست فیلمها</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="NavStick" href="#">لیست سینماها</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="NavStick" href="{% url 'index-blog' %}">وبلاگ</a>
+    </li>
+    {% if user.is_authenticated %}
+    <div class="mr-auto">
+      <a class="btn btn-success mb-1 mt-1 ml-2" id="DashbordBtn" href="{% url 'profile' %}"><i
+          class="fa fa-user ml-1"></i>
+        داشبورد {{user}}</a>
+
+      <a class="btn btn-success mb-1 mt-1 ml-2" href="{% url 'log-out' %}">خروج</a>
+    </div>
+    {% else %}
+
+    <a class="btn btn-success mb-1 mt-1 mr-auto ml-2" href="{% url 'login' %}">ورود</a>
+    {% endif %}
+
+
+  </ul>
+
+</nav>

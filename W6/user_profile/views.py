@@ -29,8 +29,7 @@ class CustomUserCreationForm(UserCreationForm):
         }
 
         widgets = {
-            'username': forms.TextInput(attrs={'size': 80
-                                               }),
+            'username': forms.TextInput(attrs={'size': 80}),
         }
 
     def save(self, commit=True):

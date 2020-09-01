@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>آنلاین تیکت</title>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <!-- Add icon library -->
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div>
+            {% include 'header.html' %}
+            {% if 'login' not in request.path and 'register' not in request.path  %}
+            <section class="jumbotron text-center"
+                style="background: white url('{%static "img/bg-poster.jpg"%}');  background-position: center; background-repeat: no-repeat; background-size: cover;">
+                <div class="container">
+                    <h1 style="color: white">به آنلاین تیکت خوش آمدید</h1>
+                    <p style="color: white">در این بخش قرار است جستجو بر روی فیلم ها و سانس ها پیاده سازی شود.</p>
+                    <p>
+                        <a href="#" class="btn btn-primary my-2">جستجو</a>
+                    </p>
+                </div>
+            </section>
+
+            {% endif %}
+
+
+            <div class="container mt-2">
+                <div class="row">
+                    {% comment %} <div class="col">
+                        سایدبار راست
+                    </div> {% endcomment %}
+                    <div class="col-8">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                    {% if 'login' not in request.path and 'register' not in request.path %}
+                    <div class="col p-5">
+                        در این قسمت سایدبار سایت پیاده سازی می شود
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div id="new"></div>
+            {% include 'footer.html' %}
+        </div>
+        {% include 'scripts.html' %}
+
+    </body>
+
+</html>

@@ -1,0 +1,52 @@
+{% extends 'base_blog.html' %}
+
+
+{% block content %}
+<style>
+    div {
+        display: flex;
+        flex-direction: row;
+        margin-right: 5px;
+    }
+</style>
+<ul>
+    {% for article in articles  %}
+    <li>
+        <a href="{% url 'detail-article' article.slug%}">
+            <h1>{{article.title}}</h1>
+        </a>
+        <p>{{article.text |truncatechars:25}}</p>
+        <p>{{article.created_date}}</p>
+        <p>امتیاز: {{article.rate_article}}</p>
+        <h5>نویسندگان: </h5>
+        <ul>
+            {% for author in article.author.all %}
+            <li>{{author.full_name}}</li>
+            {% endfor %}
+
+        </ul>
+
+    </li>
+
+    {% endfor %}
+
+</ul>
+<div>
+    {% if page_obj.has_previous %}
+    <div><a href="?page=1">&laquo; first</a><br>
+    </div>
+    <div><a href="?page={{ page_obj.previous_page_number }}"> {{ page_obj.previous_page_number }} </a></div>
+    {% endif %}
+    <div><a href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></div>
+    {% if page_obj.has_next %}
+    <div><a href="?page={{ page_obj.next_page_number }}"> {{ page_obj.next_page_number }} </a>
+    </div>
+    <div><a href="?page={{ page_obj.paginator.num_pages }}"> last &raquo;</a></div>
+    {% endif %}
+</div>
+
+
+<hr>
+
+
+{% endblock content %}

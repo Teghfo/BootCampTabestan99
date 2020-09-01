@@ -1,0 +1,96 @@
+@font-face {
+    font-family: XASHKAN;
+    src: url("https://cdn.fontcdn.ir/Font/Persian/Nazanin/Nazanin-Bold.woff");
+}
+
+body {
+    direction: rtl;
+    font-family: XASHKAN;
+    background-color: rgb(219, 226, 226);
+}
+
+
+/* span {
+    color : salmon;
+    margin-left: 20px;
+    margin-bottom: 0;
+    /* padding-left: 10px; */
+
+
+/* border: slateblue;
+    border-style: solid;
+} */
+
+.cart p {
+    color: tomato;
+    font-size: 50px;
+    text-align: center;
+}
+
+.nav {
+    background-color: gray;
+}
+
+.nav-link {
+    color: red;
+}
+
+.active {
+    color: aquamarine;
+}
+
+#NavHead {
+    font-size: 10px;
+    color: black;
+}
+
+#NavHead:hover {
+    color: darkgreen;
+}
+
+#NavHead:active {
+    color: red;
+}
+
+.head-margin {
+    margin-right: 15px;
+    margin-left: 10px;
+}
+
+#NavStick {
+    font-size: 1rem;
+    color: antiquewhite;
+}
+
+#LogIn {
+    direction: ltr;
+    margin-bottom: 1rem;
+}
+
+#signup {
+    margin-bottom: 1rem;
+}
+
+#signup p {
+    text-align: center;
+}
+
+#Header {
+    background-color: grey;
+}
+
+#Footer {
+    color: antiquewhite;
+    background-color: gray;
+}
+
+#DashbordBtn {
+    background-color: rgb(211, 127, 18);
+    border-color: rgb(211, 127, 18);
+}
+
+.header-bg {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

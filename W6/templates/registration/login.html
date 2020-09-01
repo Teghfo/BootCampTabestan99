@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<form method="post" id="LogIn">
+    {% csrf_token %}
+
+    {{form|crispy}}
+    <p style="text-align: center;"> آیا میخوای ثبت نام کنی عزیزم؟ <a href="{% url 'register' %}">ثبت نام</a> </p>
+    <button class='btn btn-success mt-1'>ورود</button>
+
+</form>
+
+{% endblock content %}
