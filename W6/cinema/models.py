@@ -38,3 +38,21 @@ class Movie(BaseCinemaModel):
 
     def __str__(self):
         return self.name
+
+
+class Cinema(models.Model):
+    name = models.CharField(max_length=50)
+    salon_number = models.SmallIntegerField()
+    address = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
+class Salon(models.Model):
+    name = models.CharField(max_length=50)
+    capacity = models.IntegerField()
+    cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
