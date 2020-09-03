@@ -24,7 +24,7 @@ class SalonView(viewsets.ModelViewSet):
 
 class CinemaView(viewsets.ModelViewSet):
     queryset = Cinema.objects.all().order_by('name')
-    serializer_class = Cinema
+    serializer_class = CinemaSerializer
 
 
 @api_view()

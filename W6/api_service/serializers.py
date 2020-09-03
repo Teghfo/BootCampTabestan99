@@ -10,12 +10,12 @@ class MovieSerializer(serializers.ModelSerializer):
 
 
 class CinemaSerializer(serializers.ModelSerializer):
-    # salons = serializers.PrimaryKeyRelatedField(
-    #   many = True, queryset = Salon.objects.all())
+    salon = serializers.PrimaryKeyRelatedField(
+        many=True, queryset=Salon.objects.all())
 
     class Meta:
         model = Cinema
-        fields = '__all__'
+        fields = ['name', 'salon']
 
 
 class SalonSerializer(serializers.ModelSerializer):
