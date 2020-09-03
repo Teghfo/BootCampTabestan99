@@ -52,7 +52,8 @@ class Cinema(models.Model):
 class Salon(models.Model):
     name = models.CharField(max_length=50)
     capacity = models.IntegerField()
-    cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE)
+    cinema = models.ForeignKey(
+        Cinema, related_name='salon', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

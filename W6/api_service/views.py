@@ -14,7 +14,7 @@ class MovieView(APIView):
         print(request.content_type)
         movies = Movie.objects.all()
         movie_serialized = MovieSerializer(movies, many=True)
-        return Response(movie_serialized.data, content_type='text/html')
+        return Response(movie_serialized.data)
 
 
 class SalonView(viewsets.ModelViewSet):

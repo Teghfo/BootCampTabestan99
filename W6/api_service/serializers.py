@@ -9,13 +9,16 @@ class MovieSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class CinemaSerializer(serializers.HyperlinkedModelSerializer):
+class CinemaSerializer(serializers.ModelSerializer):
+    # salons = serializers.PrimaryKeyRelatedField(
+    #   many = True, queryset = Salon.objects.all())
+
     class Meta:
         model = Cinema
         fields = '__all__'
 
 
-class SalonSerializer(serializers.HyperlinkedModelSerializer):
+class SalonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Salon
         fields = '__all__'
