@@ -5,12 +5,14 @@ from . import views
 
 router = routers.DefaultRouter()
 # router.register('movie', views.MovieView)
-router.register('salon', views.SalonView)
-router.register('cinema', views.CinemaView)
+# router.register('salon', views.SalonView)
+# router.register('cinema', views.CinemaView)
 
 
 urlpatterns = [
-    path('', include(router.urls)),
+    # path('', include(router.urls)),
+    path('salon', views.SalonList.as_view(), name='salon'),
+    path('salon/<int:pk>', views.SalonDetail.as_view(), name='salon-detail'),
     path('movies', views.MovieView.as_view()),
     path('hello', views.hello)
 ]

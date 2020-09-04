@@ -77,7 +77,6 @@ class BaseComment(models.Model):
 
 
 class Comment(BaseComment):
-    pass
 
     def save(self, *args, **kwargs):
         rate_count = self.article.comment_set.all().filter(rate__gt=0).count()
