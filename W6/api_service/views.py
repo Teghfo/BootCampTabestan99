@@ -3,9 +3,14 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import HttpResponse
+from rest_framework import generics
+from rest_framework.authentication import BaseAuthentication, SessionAuthentication
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 
 from cinema.models import Movie, Cinema, Salon
-from .serializers import MovieSerializer, SalonSerializer, CinemaSerializer, TempSalonSerializer
+from .serializers import MovieSerializer, SalonSerializer, CinemaSerializer, TempSalonSerializer, CommentSerializer, ArticleSerializer, AuthorSerializer
+from blog.models import Comment, Author, Article
+from .permissions import IsOwnerOrReadOnly
 
 
 class MovieView(APIView):
@@ -67,6 +72,30 @@ class SalonDetail(APIView):
             serialized_salon.save()
             return Response(serialized_salon.data)
         return Response(serialized_salon.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class CommentList(generics.ListCreateAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+
+
+class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+
+
+class ArticleList(generics.ListCreateAPIView):
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+
+
+class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
 
 
 @api_view(['GET', 'POST'])

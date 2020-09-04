@@ -14,7 +14,11 @@ urlpatterns = [
     path('salon', views.SalonList.as_view(), name='salon'),
     path('salon/<int:pk>', views.SalonDetail.as_view(), name='salon-detail'),
     path('movies', views.MovieView.as_view()),
-    path('hello', views.hello)
+    path('hello', views.hello),
+    path('comments', views.CommentList.as_view(), name='comment-list'),
+    path('comments/<int:pk>', views.CommentDetail.as_view(), name='comment-detail'),
+    path('articles', views.ArticleList.as_view(), name='article-list'),
+    path('articles/<int:pk>', views.ArticleDetail.as_view(), name='article-detail'),
 ]
 
 # urlpatterns = format_suffix_patterns(urlpatterns)

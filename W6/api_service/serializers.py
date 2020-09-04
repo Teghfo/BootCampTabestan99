@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 
 from cinema.models import Movie, Salon, Cinema
+from blog.models import Author, Article, Comment
 
 
 class MovieSerializer(serializers.ModelSerializer):
@@ -84,3 +85,26 @@ class TempUser:
         self.name = name
         self.age = age
         self.address = address
+
+
+class CommentSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Comment
+        fields = '__all__'
+
+
+class ArticleSerializer(serializers.ModelSerializer):
+    comment_set = CommentSerializer(many=True)
+
+    class Meta:
+        model = Article
+        fields = ['title', 'text', 'poster', 'author',  'comment_set']
+
+
+class AuthorSerializer(serializers.ModelSerializer):
+    article = ArticleSerializer(many=True)
+
+    class Meta:
+        model = Author
+        fields = ['profile', 'full_name', 'rate', 'article']
