@@ -15,8 +15,7 @@ class Article(models.Model):
     title = models.CharField(max_length=50)
     publication = models.ForeignKey(
         Publication, related_name='article', on_delete=models.CASCADE)
-    author = models.ManyToManyField(
-        User, related_name='article', on_delete=models.SET_NULL, null=True)
+    author = models.ManyToManyField(User)
     detail = models.TextField()
     published = models.BooleanField(default=False)
     slug = models.SlugField()
