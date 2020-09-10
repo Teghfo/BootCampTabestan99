@@ -6,6 +6,8 @@ from .models import Publication
 
 class PublicationView(viewsets.ModelViewSet):
 
+    lookup_field = 'slug'
+
     serializers = {
         'list': PublicationListSerializer,
         'retrieve': PublicationRetrieveSerializer
