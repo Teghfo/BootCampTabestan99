@@ -54,13 +54,13 @@ class ArticleImages(models.Model):
     image = models.ImageField(upload_to='blog/images/')
 
 
-RATE_CHOICE = {
+RATE_CHOICE = [
     (1, '*'),
     (2, '**'),
     (3, '***'),
     (4, '****'),
     (5, '*****'),
-}
+]
 
 
 class BaseComment(models.Model):
