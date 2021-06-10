@@ -8,7 +8,7 @@ bleach==3.1.5
 cffi==1.14.1
 decorator==4.4.2
 defusedxml==0.6.0
-Django==3.0.8
+Django==3.1.12
 django-crispy-forms==1.9.2
 django-extensions==3.0.3
 djangorestframework==3.11.1
