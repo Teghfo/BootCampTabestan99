@@ -55,7 +55,7 @@ qtconsole==4.7.5
 QtPy==1.9.0
 Send2Trash==1.5.0
 six==1.15.0
-sqlparse==0.3.1
+sqlparse==0.4.4
 terminado==0.8.3
 testpath==0.4.4
 toml==0.10.1
